@@ -19,7 +19,7 @@
         <p class="rule_des" v-for="item in des">{{ item }}</p>
     </div>
     <footer>
-        <p>此项目开源于 <a href="https://github.com">https://github.com</a></p>
+        <p>此项目开源于 <a href="https://github.com/Coooolfan/BoxHunter">https://github.com</a></p>
     </footer>
 </template>
 
