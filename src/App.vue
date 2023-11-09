@@ -13,7 +13,7 @@
         </div>
         <p class="warn">{{ warn }}</p>
         <p :style="{ color: msgColor }" class="msg">{{ msg }}</p>
-        <button v-if="this.msg.includes('胜利')" class="button" @click="refresh">重新开始</button>
+        <button v-if="this.msg.includes('胜利') || this.msg.includes('平局')" class="button" @click="refresh">重新开始</button>
         <hr style="width: 100%;">
         <p class="rule_title">规则介绍</p>
         <p class="rule_des" v-for="item in des">{{ item }}</p>
@@ -159,6 +159,7 @@ export default {
                     && this.BoardData[i][0] !== "" && this.BoardData[i][1] !== "" && this.BoardData[i][2] !== "") {
                     this.msg = this.BoardData[i][0][0] === "0" ? "橙方胜利" : "红方胜利";
                     console.log(this.BoardData);
+                    return;
                 }
             }
             for (let i = 0; i < 3; i++) {
@@ -166,9 +167,16 @@ export default {
                     && this.BoardData[0][i] !== "" && this.BoardData[1][i] !== "" && this.BoardData[2][i] !== "") {
                     this.msg = this.BoardData[0][i][0] === "0" ? "橙方胜利" : "红方胜利";
                     console.log(this.BoardData);
+                    return;
                 }
-
             }
+            let count = 0;
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++)
+                    count += this.BoardData[i][j].length;
+            }
+            if(count===9*2)
+                this.msg="平局";
         },
         refresh() {
             location.reload();
