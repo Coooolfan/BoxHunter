@@ -53,14 +53,9 @@ export default {
             BoxInHandsPickedStatus0: -1,
             BoxInHandsPickedStatus1: -1,
             BoxInBoardPickedStatus: "-1",
-            des: ["每一方有大中小各两个棋子，",
-                "每一回合每一方都可以在棋盘上放置一颗自己的棋子，",
-                "如果棋盘上已经有棋子，",
-                "则可以将自己的棋子放在比自己小的棋子上，",
-                "如果比自己大，则将对方的棋子吃掉，",
-                "如果比自己小，则不能放置。",
-                "当任何一行或者一列是相同颜色时，",
-                "该颜色的一方获胜。"]
+            des: ["每一回合每一方都可以在棋盘上放置一颗自己的棋子",
+                "可以放置在空白处，也可以选择吃掉对方比自己小的棋子、并占据对方的位置",
+                "吃掉的棋子不会归还对方"]
 
         }
     },
@@ -175,8 +170,8 @@ export default {
                 for (let j = 0; j < 3; j++)
                     count += this.BoardData[i][j].length;
             }
-            if(count===9*2)
-                this.msg="平局";
+            if (count === 9 * 2)
+                this.msg = "平局";
         },
         refresh() {
             location.reload();
